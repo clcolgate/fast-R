@@ -1,0 +1,103 @@
+# Data Structures
+
+## Vectors
+In R, a vector is a sequence of data elements that are all of the same type. Concatenate elements into a vector using the `c()` function.
+
+```{r}
+c(1, 2, 3)  # numeric vector
+c("a", "b", "c")  # string vector
+c(TRUE, FALSE, TRUE)  # boolean vector
+```
+
+If you try to put data elements of different types in the same vector, R will coerce the elements into one type.
+Usually this means that when you combine numeric and string elements, the numbers will be turned into strings.
+Boolean values can be coerced into 0 or 1, or "TRUE" or "FALSE".
+
+```{r}
+c(1, 2, "a", "b")  # notice the quote marks, indicates they're strings
+c(1, FALSE)  # FALSE is now 0
+c("dog", TRUE)  # TRUE is now a string
+c("cat", 9, TRUE)  # everything is now a string
+```
+
+If you need a vector of sequential integers, you can quickly make a vector from _m_ to _n_ by typing `m:n`.
+
+```{r}
+10:15
+```
+
+Repeat vectors using the `rep()` function.
+Use the `rep()` function's `times` argument to repeat the whole vector a specific number of times.
+Use the `each` argument to repeat each element the specified number of times.
+
+```{r}
+vec <- c(1, 3, 5, 7)
+rep(vec, times = 3)  # repeat the whole vector 3 times
+rep(vec, each = 4)  # repeat each element of the vector 4 times
+```
+
+Get the _n_-th element of a vector by putting _n_ in square brackets after the vector's name.
+The first element in a vector is at index position 1. Some languages start at 0, instead.
+You can get the _m_ through _n_-th element by putting `m:n` in the square brackets.
+You can put a vector of positions in the square brackets to extract the vector elements at those positions.
+Place a minus sign before the number(s) in square brackets to return everything except the ones you specified.
+
+```{r}
+str_vec <- c("a", "b", "c", "d", "e")
+str_vec[2]  # get second element
+str_vec[2:4]  # get second through fourth element
+str_vec[c(1, 3, 5)]  # get first, third, and fifth element
+str_vec[-2]  # get everything except second element
+# needs c() because it separates the - from the 1,
+# otherwise R thinks you want -1 through 3
+str_vec[-c(1:3)]  
+str_vec[-c(2, 4)]  # returns everything except the second and fourth element
+```
+
+You can concatenate multiple vectors to make one long vector.
+
+```{r}
+vec1 <- c(1, 2, 3)
+vec2 <- c(4, 5, 6)
+
+c(vec1, vec2)
+```
+
+Get the number of elements in a vector using the `length()` function.
+
+```{r}
+length(vec1)
+```
+
+## Matrices
+
+A matrix is just a 2D arrangement of data elements, similar to how a vector is a 1D arrangement of data elements.
+All the elements in a matrix are all of the same type.
+The two dimensions of matrices are length (number of horizontal rows) and width (number of vertical columns).
+
+You can create a matrix using the `matrix()` function. It has arguments for the elements to put in the matrix, the number of rows, and the number of columns, along with an argument for whether you want the elements placed in the matrix by row or by column.
+
+```{r}
+matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)  # 2 * 3 matrix, filled in by row
+matrix(1:6, nrow = 2, ncol = 3, byrow = FALSE)  # 2 * 3 matrix, filled in by column
+```
+
+`length()` gives you the number of elements in a matrix, and `dim()` will tell you how many rows and columns it has.
+`nrow()` and `ncol()` will give you just the number of rows and columns, respectively.
+
+```{r}
+mat <- matrix(1:12, nrow = 4, ncol = 3, byrow = TRUE)  # 4 * 3 matrix
+mat
+
+length(mat)  # number of elements in the matrix
+dim(mat)  # numer of rows and columns in the matrix
+nrow(mat)  # just the number of rows
+ncol(mat)  # just the number of columns
+```
+## Arrays
+
+
+## Data frames
+
+
+## Lists
