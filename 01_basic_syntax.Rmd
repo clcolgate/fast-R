@@ -1,18 +1,63 @@
----
-title: "R Notebook"
-output: html_notebook
----
+## Basics
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+To run code from the script (the top right pane) in RStudio, you can:
+* Highlight the code you want to run, then press `Ctrl + Enter`
+* Click on a line of code in the script that you want to run to move your cursor there, then press `Ctrl + Enter`
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+To run code in the console (the bottom right pane), type in or paste what you want to run and press `Enter`.
+
+# Variables
+Use the `<-` operator create new variables.
+When you do this, you basically assign a name a new R object, and it gets saved.
+The name of the variable goes on the left,
+and the variable's value(s) go on the right.
+When you run the name of a variable in R, it will spit out the object that goes by that name.
 
 ```{r}
-plot(cars)
+# assign to a number the name "x'
+x <- 4
+x  # should spit out 4
+
+y <- "This is a string"
+y  # should spit out the string saved to the name "y"
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+# Operators
+R's arithmetic operators are the similar to other languages.
+`+` adds, `-` subtracts, `*` multiplies, and `/` divides.
+`^` is used for exponentiation.
+Use parentheses if you need a specific order of operations
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r}
+x <- 6
+y <- 3
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+x + y
+x - y
+x * y
+x / y
+x ^ y
+
+```
+
+R's logical operators are similar, too.
+`<` is _less than_, `>` is _greater than_.
+`<=` and `>=` are _less than or equal to_ and _greater than or equal to_, respectively.
+`==` means _is equal to_. __THIS IS IMPORTANT TO REMEMBER.__
+`!=` means _is not equal to_.
+
+Using logical operators will return a `TRUE` or `FALSE` boolean.
+
+```{r}
+3 > 7
+3 < 7
+4 <= 2 ^ 2
+10 >= 5 + 6
+15 == 30 / 2
+
+"apple" == "orange"  # strings can be compared, too
+"b" != "a"
+
+```
+
+
