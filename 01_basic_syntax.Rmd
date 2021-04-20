@@ -60,4 +60,62 @@ Using logical operators will return a `TRUE` or `FALSE` boolean.
 
 ```
 
+## Functions
+Functions carry out tasks, often taking arguments/parameters as inputs and returning an object as an output.
+Functions all have a similar format:
 
+```{r, eval = FALSE}
+functionName(arg_list) 
+```
+
+Functions have a name, followed by parentheses.
+Functions often require input(s), which go in the parentheses. These are arguments.
+When you _specify_ a function's arguments, you're giving it the inputs that it needs.
+
+Here's an example of a function:
+
+```{r, eval = FALSE}
+read.csv(file = "dataset.csv", header = TRUE)
+```
+
+The function is called `read.csv()`.
+It imports a CSV file into R.
+The main arguments of `read.csv()` are `file` and `header`.
+The `file` argument is where you supply the name of the CSV file,
+and the `header` argument tells R whether the first line in the CSV file contains column names, or not.
+
+As it is, the function above would simply read the CSV file, and then show you the result.
+If you want to save the read-in CSV file into your R workspace, so you can do things to it,
+you should assign it a name:
+
+```{r, eval = FALSE}
+my_data <- read.csv(file = "dataset.csv", header = TRUE)
+```
+
+A lot of functions have arguments that you can specify, without having to explicitly type out the arguments' name.
+For example, we can omit the `file =` from our  `read.csv()` function--
+it's smart enough to know that the string we give it in the first argument spot is the CSV file's name.
+Knowing what argument names can be ommitted comes with experience, for the most part.
+
+```{r, eval = FALSE}
+# the function knows that the first input is the file name
+my_data <- read.csv("dataset.csv", header = TRUE)
+```
+
+Some arguments require including the name and `=` before specifying them, to prevent ambiguous inputs.
+We can't omit the `header =` in our `read.csv()` function above, for example, 
+because `read.csv()` has other arguments that take `TRUE` or `FALSE` as an input.
+It wouldn't know what argument a lone `TRUE` should apply to.
+
+A lot of functions have arguments have default values.
+If you don't specify an argument that has a default value,
+the function will go ahead and use the default value to specify that argument.
+
+For example: The default value for the `header` argument in `read.csv()` is `FALSE`,
+meaning that if you don't specify the `header` argument yourself,
+the `read.csv()` function will assume that your CSV file has no header row.
+
+```{r, eval = FALSE}
+# header = FALSE is implied here, by default
+my_data <- read.csv("dataset.csv")
+```
