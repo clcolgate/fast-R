@@ -1,0 +1,39 @@
+# Importing Data
+
+Loading in a dataset is one of the first things you do in an R script.
+R has functions for downloading CSVs along with SPSS, SAS, and Stata data files, and more.
+
+## CSVs
+Most datasets arrive as Excel files. While there are methods of importing .xlsx files, they tend to be clumsy.
+I recommend saving Excel files as CSVs (or TSVs) for easy importation into R.
+
+Use the `read.csv()` function for loading in CSVs.
+The first argument is always the name of the CSV file, in quotation marks.
+The `header` argument is a TRUE/FALSE value reflecting whether the top line in the CSV file has column names, or not.
+If `header` is set to TRUE, then the top line of the CSV will be used to supply the column names.
+Use the optional `skip` argument to skip a specified number of lines at the top of the CSV, before reading in the data.
+The optional `nrows` argument lets R know how many rows of the CSV file to read in.
+The `na.strings` argument is a string or vector of strings which tells R what represents missing values in the CSV file.
+Completely blank values (that is, blank with no spaces) will automatically be read in as missing if `na.strings` is left unspecified.
+`stringsAsFactors` is a TRUE/FALSE value that determines whether strings should be automatically converted to factors, or not. I usually set it to FALSE.
+
+```{r}
+# read in the header and the first 100 rows of a csv dataset
+dat <- read.csv("test_dataset.csv", header = TRUE, nrows = 100,
+                na.strings = c("", "unknown"), stringsAsFactors = FALSE)
+```
+
+If you want to read in a TSV or other non-comma separated dataset, you can specify what the separating character is using the optional `sep` arguement in the `read.csv` function.
+`\t` represents tabs. 
+
+```{r}
+# read tsv file
+dat <- read.csv("test_dataset_2.csv", header = TRUE, sep = "\t")
+```
+
+## SPSS
+
+## SAS
+
+## Stata
+
